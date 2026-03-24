@@ -1,0 +1,9 @@
+
+INFO Model training started
+INFO Epoch 1 complete, loss=0.45
+WARNING Learning rate is very high
+INFO Epoch 2 complete, loss=0.31
+ERROR NaN detected in gradients
+WARNING Validation loss increasing
+INFO Training finished
+ERROR Checkpoint save failed
