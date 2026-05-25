@@ -1,0 +1,67 @@
+Data cleanup
+==============
+- Identify the target variable and the features
+- Identify the shape of the dataset
+- Identify numeric and Object(Categorical) dataset
+- Encode the Object dataset using suitable encoding technique. 
+ - Encoding techniques One-Hot, Binary (Ordinals), Frequency Encoding, Target Encoding
+ - In case of large features see if categoricals have colleanearity to be removed 
+- Identify the domain to use domain knowledge
+
+- For the following Dataset Generate code to determine the following
+- Identify in the dataset which columns which have empty values
+- Identify in the dataset which columns have NaN values
+- Identify in the dataset which rows are duplicate
+- Identify the rows which have maximum empty values
+
+Once the data clean up is done
+- See if we need to impute the missing values if any
+- Identify which imputation method to be used based on the domain knowledge
+- Generate the basic metrics for the data like mean, median, mode, kurtosis, skewness, min-max, sum etc
+- Using domain knowledge see if we need to treat outliers.
+    - Which domain technique would be the best to do this: Winsorization, Imputation or replacement with reasonable estimate, 
+    Trimming - removing outlier, Cap the data - Set min/max
+
+
+- If it is classification problem see if there is data imbalance
+    - use SMOTE (imblearn) to synthesize the under represented data
+
+
+EDA
+====
+
+- Generate the Following plots to understand the data
+ - subplots for the Histogram of either all the numeric features or the key features
+ - subplot for all the KDE (Kernel density plot) of either all the numeric features or the key features
+ - Generate consolidated box plot to see the scaling of the data
+    - If the scaling is too much use either Normalization or Standardization to scale the numeric feature
+ - Generate charts for the categoricals for visualization
+ - Generate the Box-plot for all the continuous numeric features/key features
+ - Generate lower-half Correlation heat map to view colleanearity between all the features.
+    - Usually done for the numerical features
+ - Generate pairplot between the numeric features if needed
+    - If the features are too many we need to see if we can use this
+- Generate the Histogram, KDE and Boxplot for Target separately to see if skewness is present. (Needs scaling?)
+  - Box-Cox usually used for Target 
+- If the number of feature set is too large, think of feature reduction, do the below analysis (Do not drop features before train-test split)
+    - Following to reduce the curse of dimensionality
+    - VIF - To see the multivariable redumdancy, High score of VIF>10?
+    - PCA (Just for visualization) - PCA Scree plot
+    - tSNE (2D) to see the classification of important data (Only for visualization)
+    - If it is Clustering problem use the tSNE output of K to be used in the KMeans
+    - We can also use Hierarchical clustering to see the length of the leg of the branch
+
+Pipeline
+========
+- Split the data into train and test.
+- Apply Transformation if required
+- Apply scaling if required
+- Model selection, Model iteration
+- Model.fit()
+    - Print Train metrics: R2, RMSE, RAE, Residual Plot, QQ Plot
+    - Print OLS Regression metrics
+- Model.predict()
+    - Print Test metrics : R2, RMSE, RAE, Residual Plot, QQ Plot
+    - Print OLS Regression metrics
+
+
